@@ -28,6 +28,14 @@ a {
   display: none;
 }
 
+.mobile-nav-menu {
+  display: none;
+}
+
+.display {
+  display: none;
+}
+
 /* Header */
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -73,12 +81,6 @@ header ul li a:hover {
   padding-right: 24px;
 }
 
-.mobile-nav-menu {
-}
-
-.display {
-  display: block;
-}
 /* Footer */
 /* ------------------------------------------------------------------------------------------------------- */
 footer {
@@ -111,6 +113,14 @@ footer {
 
   .desktop {
     display: flex;
+  }
+
+  .mobile-nav-menu {
+    display: none;
+  }
+
+  .display {
+    display: none;
   }
 }
 
@@ -145,5 +155,35 @@ footer {
 
   ul.mobile li i {
     margin-right: 8px;
+  }
+
+  .display {
+    display: block;
+  }
+
+  header {
+    min-width: 320px;
+  }
+
+  footer {
+    min-width: 320px;
+  }
+
+  .mobile-nav-menu ul {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile-nav-menu ul li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mobile-nav-menu ul li a {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }

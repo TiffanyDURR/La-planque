@@ -73,6 +73,12 @@ header ul li a:hover {
   padding-right: 24px;
 }
 
+.mobile-nav-menu {
+}
+
+.display {
+  display: block;
+}
 /* Footer */
 /* ------------------------------------------------------------------------------------------------------- */
 footer {
@@ -124,5 +130,20 @@ footer {
 
   .mobile {
     display: flex;
+  }
+
+  ul.mobile li {
+    display: flex;
+    align-items: center;
+    color: #f1ebeb;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  ul.mobile li i {
+    margin-right: 8px;
   }
 }

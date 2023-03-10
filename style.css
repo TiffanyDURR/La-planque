@@ -24,6 +24,10 @@ a {
   color: #f1ebeb;
 }
 
+.mobile {
+  display: none;
+}
+
 /* Header */
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -85,6 +89,25 @@ footer {
   font-size: 12px;
 }
 
+/* Tablette */
+/* ------------------------------------------------------------------------------------------------------- */
+
+@media only screen and (min-width: 769px) and (max-width: 1300px) {
+  .content {
+    min-width: 768px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .desktop {
+    display: flex;
+  }
+}
+
 /* Mobile */
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -94,15 +117,12 @@ footer {
     width: 100%;
     max-width: 768px;
   }
-}
 
-/* Tablette */
-/* ------------------------------------------------------------------------------------------------------- */
+  .desktop {
+    display: none;
+  }
 
-@media only screen and (min-width: 769px) and (max-width: 1300px) {
-  .content {
-    min-width: 768px;
-    width: 100%;
-    max-width: 1200px;
+  .mobile {
+    display: flex;
   }
 }

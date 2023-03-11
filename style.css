@@ -70,7 +70,7 @@ header ul li a {
 }
 
 header ul li a:hover {
-  background-color: rgb(28, 14, 91, 0.1);
+  background-color: rgb(28, 14, 91, 0.06);
   color: #f18d5c;
 }
 

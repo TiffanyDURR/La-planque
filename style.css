@@ -131,6 +131,7 @@ footer {
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .game:hover {

@@ -112,6 +112,56 @@ footer {
   font-size: 12px;
 }
 
+/* Game IMG */
+/* ------------------------------------------------------------------------------------------------------- */
+
+.games-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game {
+  background-size: cover;
+  width: 175px;
+  height: 263px;
+  margin-top: 42px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+
+.game:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.game-hover {
+  position: relative;
+  top: -266px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.game-hover:hover {
+  opacity: 0.5;
+  top: -266px;
+}
+
+.game-01 {
+  background: url(assets/img/games-thumb/game-01.png);
+}
+
+.game-02 {
+  background: url(assets/img/games-thumb/game-02.png);
+}
+
+.game-03 {
+  background: url(assets/img/games-thumb/game-03.png);
+}
+
 /* Tablette */
 /* ------------------------------------------------------------------------------------------------------- */
 

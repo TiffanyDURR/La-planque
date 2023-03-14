@@ -197,6 +197,7 @@ input#pseudo:focus {
   font-size: 14px;
   font-style: italic;
   padding: 20px;
+  border-radius: 8px;
 }
 
 .connectedas {

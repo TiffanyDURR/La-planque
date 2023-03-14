@@ -4,7 +4,7 @@ const envoyerBTN = document.getElementById("submit");
 const messageInput = document.getElementById("message");
 const pseudoInput = document.getElementById("pseudo");
 
-let ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
+let ws = null;
 
 function createPacket(command, from, content) {
   let packet = new Object();
@@ -17,6 +17,9 @@ function createPacket(command, from, content) {
 }
 
 function connectToServer() {
+
+ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
+
   if ("WebSocket" in window) {
     ws.onopen = function () {
       readConsole("Connecté au serveur");
@@ -34,7 +37,8 @@ function connectToServer() {
   }
 }
 
-seConnecterBTN.addEventListener("click", () => {
+seConnecterBTN.addEventListener("click", (e) => {
+  e.preventDefault();
   connectToServer();
 });
 

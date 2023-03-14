@@ -2,17 +2,19 @@ let consoleContainer = document.querySelector(".console");
 const seConnecterBTN = document.getElementById("valider");
 const envoyerBTN = document.getElementById("submit");
 const messageInput = document.getElementById("message");
+const pseudoInput = document.getElementById("pseudo");
 
 let ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
 
-const songs = [
-  {
-    nom: "Tryixouille l'andouille",
-    prenom: "Claffouti",
-    age: 74,
-    infos: ["gris", "bleu", "vert"],
-  },
-];
+function createPacket(command, from, content) {
+  let packet = new Object();
+
+  packet.command = command;
+  packet.from = from;
+  packet.content = content;
+
+  return JSON.stringify(packet);
+}
 
 function connectToServer() {
   if ("WebSocket" in window) {
@@ -32,8 +34,7 @@ function connectToServer() {
   }
 }
 
-seConnecterBTN.addEventListener("click", (e) => {
-  e.preventDefault();
+seConnecterBTN.addEventListener("click", () => {
   connectToServer();
 });
 
@@ -48,6 +49,9 @@ function sendMessage(message) {
 
 envoyerBTN.addEventListener("click", (e) => {
   e.preventDefault();
-  sendMessage(messageInput.value);
+
+  let packet = createPacket("SEND_MESSAGE", pseudoInput.value, messageInput.value);
+
+  sendMessage(packet);
   messageInput.value = "";
 });

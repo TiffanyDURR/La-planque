@@ -17,6 +17,10 @@ function createPacket(command, from, content) {
   return JSON.stringify(packet);
 }
 
+function scrollToBottom() {
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
 function connectToServer() {
   ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
 
@@ -64,6 +68,7 @@ function readConsole(message) {
 function sendMessage(message) {
   readConsole(`Envoi : ${message}`);
   ws.send(message);
+  scrollToBottom();
 }
 
 envoyerBTN.addEventListener("click", (e) => {

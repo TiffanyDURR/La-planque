@@ -193,7 +193,7 @@ input#pseudo:focus {
 
 .indiquer-pseudo {
   background-color: #f18d5c;
-  color: #ffffff;
+  color: #f1ebeb;
   font-size: 14px;
   font-style: italic;
   padding: 20px;
@@ -203,7 +203,7 @@ input#pseudo:focus {
 .connectedas {
   display: inline-block;
   background-color: rgb(28, 14, 91, 0.1);
-  color: #ffffff;
+  color: #f1ebeb;
   padding: 12px;
   border: none;
   outline: none;
@@ -219,7 +219,7 @@ input#pseudo:focus {
 }
 
 .super-error {
-  background-color: #ffffff;
+  background-color: #f1ebeb;
 }
 
 .pseudo-container .error,
@@ -242,7 +242,7 @@ input#pseudo:focus {
 
 input#submit {
   background-color: #f18d5c;
-  color: #ffffff;
+  color: #f1ebeb;
   padding: 12px;
   border: none;
   outline: none;
@@ -254,8 +254,8 @@ input#submit {
 }
 
 input#valider {
-  background-color: #dda976;
-  color: #ffffff;
+  background-color: #f18d5c;
+  color: #f1ebeb;
   padding: 13px;
   border: none;
   outline: none;
@@ -271,22 +271,22 @@ input#valider {
 
 .check {
   display: inline-block;
-  background-color: #dda976;
-  color: #ffffff;
+  background-color: #f18d5c;
+  color: #f1ebeb;
   padding: 12px;
   border: none;
   outline: none;
   -moz-outline-style: none;
   box-shadow: none;
-  border: 2px solid #dda976;
+  border: 2px solid #f18d5c;
   cursor: pointer;
   margin-left: -49px;
 }
 
 .check2 {
   display: inline-block;
-  background-color: #dda976;
-  color: #ffffff;
+  background-color: #f18d5c;
+  color: #f1ebeb;
   padding: 12px;
   border: none;
   outline: none;
@@ -294,12 +294,12 @@ input#valider {
   box-shadow: none;
   cursor: pointer;
   margin-left: -136px;
-  border: 2px solid #dda976;
+  border: 2px solid #f18d5c;
 }
 
 .check2:focus,
 .check2:active {
-  border: 2px solid #dda976;
+  border: 2px solid #f18d5c;
 }
 
 input#message {
@@ -349,9 +349,18 @@ input#message:focus {
 }
 
 .error {
-  color: #dda976;
+  color: #f18d5c;
   font-style: italic;
   font-size: 14px;
+}
+
+h1 {
+  color: #f1ebeb;
+  margin-top: 40px;
+  color: #f18d5c;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Tablette */

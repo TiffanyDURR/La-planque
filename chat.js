@@ -32,7 +32,8 @@ function connectToServer() {
   }
 }
 
-seConnecterBTN.addEventListener("click", () => {
+seConnecterBTN.addEventListener("click", (e) => {
+  e.preventDefault();
   connectToServer();
 });
 
@@ -45,6 +46,8 @@ function sendMessage(message) {
   ws.send(message);
 }
 
-envoyerBTN.addEventListener("click", () => {
+envoyerBTN.addEventListener("click", (e) => {
+  e.preventDefault();
   sendMessage(messageInput.value);
+  messageInput.value = "";
 });

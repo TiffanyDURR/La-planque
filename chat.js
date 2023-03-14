@@ -3,6 +3,7 @@ const seConnecterBTN = document.getElementById("valider");
 const envoyerBTN = document.getElementById("submit");
 const messageInput = document.getElementById("message");
 const pseudoInput = document.getElementById("pseudo");
+const chatBox = document.querySelector(".chatbox");
 
 let ws = null;
 
@@ -17,15 +18,15 @@ function createPacket(command, from, content) {
 }
 
 function connectToServer() {
-
-ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
+  ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
 
   if ("WebSocket" in window) {
     ws.onopen = function () {
       readConsole("Connecté au serveur");
     };
-    ws.onmessage = function (event) {
-      readConsole("Message reçu..." + event.data);
+
+    ws.onmessage = function (e) {
+      onMessage(e);
     };
 
     ws.onclose = function () {
@@ -34,6 +35,20 @@ ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
     ws.onerror = function (e) {
       readConsole("Une erreur est survenue" + e);
     };
+  }
+}
+
+function onMessage(event) {
+  if (event.data != null) {
+    readConsole("Message reçu..." + event.data);
+    let packet = JSON.parse(event.data);
+
+    if (packet.command == "MESSAGE_RECEIVED") {
+      chatBox.innerHTML += `
+<div class="message-envoye"> <span class="pseudo-chat">${packet.from}</span> : ${packet.content}</div>`;
+    } else {
+      readConsole("Packet non reçu");
+    }
   }
 }
 

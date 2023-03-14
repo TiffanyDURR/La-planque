@@ -163,6 +163,196 @@ footer {
   background: url(assets/img/games-thumb/game-03.png);
 }
 
+/* Game IMG */
+/* ------------------------------------------------------------------------------------------------------- */
+
+.content-chat {
+  margin-top: 40px;
+}
+
+input {
+  font-size: 18px;
+}
+
+input#pseudo {
+  background-color: rgb(28, 14, 91, 0.5);
+  color: #f1ebeb;
+  padding: 12px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 1px solid rgb(28, 14, 91, 0.3);
+  border-radius: 12px 0px 0px 12px;
+  font-size: 17px;
+}
+
+input#pseudo:focus {
+  border-color: #f18d5c;
+}
+
+.indiquer-pseudo {
+  background-color: #f18d5c;
+  color: #ffffff;
+  font-size: 14px;
+  font-style: italic;
+  padding: 20px;
+}
+
+.connectedas {
+  display: inline-block;
+  background-color: rgb(28, 14, 91, 0.1);
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 1px solid rgb(28, 14, 91, 0.1);
+  border-radius: 8px;
+}
+
+.pseudo-content {
+  display: flex;
+  align-items: center;
+}
+
+.super-error {
+  background-color: #ffffff;
+}
+
+.pseudo-container .error,
+.message-container .error,
+.indiquer-pseudo {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.message-envoye {
+  display: block;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background-color: rgb(28, 14, 91, 0.3);
+  border-radius: 8px;
+  color: #f1ebeb;
+}
+
+input#submit {
+  background-color: #f18d5c;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 1px solid #f18d5c;
+  cursor: pointer;
+  opacity: 0;
+}
+
+input#valider {
+  background-color: #dda976;
+  color: #ffffff;
+  padding: 13px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 2px solid #f18d5c;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 100;
+  margin-left: 4px;
+}
+
+.check {
+  display: inline-block;
+  background-color: #dda976;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 2px solid #dda976;
+  cursor: pointer;
+  margin-left: -49px;
+}
+
+.check2 {
+  display: inline-block;
+  background-color: #dda976;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin-left: -136px;
+  border: 2px solid #dda976;
+}
+
+.check2:focus,
+.check2:active {
+  border: 2px solid #dda976;
+}
+
+input#message {
+  background-color: rgb(28, 14, 91, 0.5);
+  color: #f1ebeb;
+  padding: 12px;
+  border: none;
+  outline: none;
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 1px solid rgb(28, 14, 91, 0.5);
+  width: 100%;
+  font-size: 17px;
+  border-radius: 12px 0px 0px 12px;
+}
+
+.titre-pseudo {
+  margin-bottom: 24px;
+}
+
+.msg {
+  margin-top: 24px;
+}
+
+.pseudal,
+.pseudo-chat {
+  color: #f18d5c;
+  font-weight: 600;
+}
+
+input#message:active,
+input#message:focus {
+  border: 1px solid #f18d5c;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatbox {
+  height: 400px;
+  scrollbar-width: thin;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.error {
+  color: #dda976;
+  font-style: italic;
+  font-size: 14px;
+}
+
 /* Tablette */
 /* ------------------------------------------------------------------------------------------------------- */
 

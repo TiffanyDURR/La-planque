@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/159d0e16c5.js" crossorigin="anonymous"></script>
+    <title>La Planque</title>
+    <script defer src="scripts/main.js"></script>
+    <script defer src="chat.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>LA PLANQUE</h1>
+      <nav>
+        <ul class="desktop">
+          <li><a href="index.html" target="_blank">Accueil</a></li>
+          <li><a href="" target="_blank">A propos</a></li>
+          <li><a href="chat.html">Chat</a></li>
+        </ul>
+        <ul class="mobile">
+          <li><i class="fas fa-bars"></i> <span>Menu</span></li>
+        </ul>
+        <div class="mobile-nav-menu"></div>
+      </nav>
+    </header>
+    <main>
+      <div class="content">
+        <div class="content-chat">
+          <div class="titre-pseudo"></div>
+          <form class="pseudo">
+            <div class="pseudo-container">
+              <div class="pseudo-content">
+                <input type="text" class="pseudo-inputs" id="pseudo" autocomplete="off" placeholder="Ton pseudo" />
+                <div class="Valider">
+                  <input type="submit" value="Confirmer" id="valider" />
+                  <div class="check2"><i class="fas fa-check"></i></div>
+                </div>
+              </div>
+              <span class="error"></span>
+            </div>
+          </form>
+
+          <div class="chatbox" id="boitechat">
+            <span></span>
+          </div>
+
+          <form class="msg">
+            <div class="message-container">
+              <div class="message-content">
+                <input type="text" class="message-inputs" id="message" autocomplete="off" placeholder="Ton message" />
+                <div class="envoyer">
+                  <input type="submit" value="V.." id="submit" />
+                  <div class="check"><i class="fas fa-check"></i></div>
+                </div>
+              </div>
+              <span class="error"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer>La planque - Tous droits réservés, 2023</footer>
+  </body>
+</html>

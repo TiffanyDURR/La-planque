@@ -363,6 +363,31 @@ h1 {
   letter-spacing: 1px;
 }
 
+.console {
+  background-color: rgb(28, 14, 91, 0.8);
+  margin-top: 40px;
+  height: 180px;
+  border-radius: 8px;
+  scrollbar-width: thin;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+
+.console {
+  padding: 20px;
+  color: #f1ebeb;
+}
+
+.console li {
+  display: flex;
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(28, 14, 91, 1);
+  margin-bottom: 12px;
+  border-radius: 8px;
+  color: rgb(241, 235, 235, 0.2);
+}
+
 /* Tablette */
 /* ------------------------------------------------------------------------------------------------------- */
 

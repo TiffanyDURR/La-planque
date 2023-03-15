@@ -267,6 +267,9 @@ input#valider {
   opacity: 0;
   z-index: 100;
   margin-left: 4px;
+  display: inline-block;
+  margin-right: 100px;
+  width: 20px;
 }
 
 .check {
@@ -347,9 +350,20 @@ input#message:focus {
   overflow: scroll;
   scroll-behavior: smooth;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+}
+
+.deconnex {
+}
+
+.deconnex i {
+  background-color: #f18d5c;
+  color: #f1ebeb;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  margin-left: 12px;
+  margin-right: -100px;
+  display: inline-block;
 }
 
 div.message-envoye {

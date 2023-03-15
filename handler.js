@@ -10,18 +10,17 @@ function handleMessage(packet) {
 }
 
 function handleConnect(packet) {
-     let users = packet.users;
-     users.forEach((user) => {
-       userList.innerHTML += `<li id="${user}"><span>${user}</span></li>`;
-     });
+  let users = packet.users;
+  users.forEach((user) => {
+    userList.innerHTML += `<li id="${user}"><span>${user}</span></li>`;
+  });
 }
 
-function userLeft(packet) {
-    let itemUser = document.getElementById(packet.username);
-
-    itemUser.innerHTML = "";
+function handleUserLeft(packet) {
+  let itemUser = document.getElementById(packet.username);
+  itemUser.remove();
 }
 
-function userConnected(packet) {
-
+function handleUserConnected(packet) {
+  userList.innerHTML += `<li id="${packet.username}"><span>${packet.username}</span></li>`;
 }

@@ -99,3 +99,9 @@ form.addEventListener("submit", (e) => {
     `;
   }
 });
+
+let pseudoChat = document.querySelectorAll(".pseudo-chat");
+
+pseudoChat.forEach((pseudal) => {
+  pseudal.style.color = "grey";
+});

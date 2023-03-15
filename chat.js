@@ -48,8 +48,12 @@ function onMessage(event) {
     let packet = JSON.parse(event.data);
 
     if (packet.command == "MESSAGE_RECEIVED") {
+      let now = new Date();
+      let heure = now.getHours();
+      let minute = now.getMinutes();
+      let seconde = now.getSeconds();
       chatBox.innerHTML += `
-<div class="message-envoye"> <span class="pseudo-chat">${packet.from}</span> : ${packet.content}</div>`;
+<div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat">${packet.from}</span> : ${packet.content}</div>`;
     } else {
       readConsole("Packet non reçu");
     }

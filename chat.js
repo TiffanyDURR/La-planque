@@ -30,7 +30,7 @@ function connectToServer() {
 
   if ("WebSocket" in window) {
     ws.onopen = function () {
-      readConsole("Connecté au serveur");
+      writeConsole("Connecté au serveur");
     };
 
     ws.onmessage = function (e) {
@@ -38,48 +38,41 @@ function connectToServer() {
     };
 
     ws.onclose = function () {
-      readConsole("Connexion fermée");
+      writeConsole("Connexion fermée");
     };
     ws.onerror = function (e) {
-      readConsole("Une erreur est survenue" + e);
+      writeConsole("Une erreur est survenue" + e);
     };
   }
 }
 
 function onMessage(event) {
   if (event.data != null) {
-    readConsole("Message reçu..." + event.data);
+    writeConsole("Message reçu..." + event.data);
     let packet = JSON.parse(event.data);
 
     if (packet.command == "MESSAGE_RECEIVED") {
-      let now = new Date();
-      let heure = now.getHours();
-      let minute = now.getMinutes();
-      let seconde = now.getSeconds();
-      if (seconde < 10 || heure < 10 || minute < 10) {
-        seconde = "0" + seconde;
-      }
-      chatBox.innerHTML += `
-<div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat">${packet.from}</span> : ${packet.message}</div>`;
+      handleMessage(packet);
     } else if (packet.command == "CONNECT") {
-      let users = packet.users;
-      users.forEach((user) => {
-        userList.innerHTML += `<li><span>${user}</span></li>`;
-      });
+      handleConnect(packet);
+    } else if (packet.command == "USER_LEFT") {
+      handleUserLeft(packet);
+    } else if (packet.command == "USER_CONNECTED") {
+      handleUserConnected(packet);
     } else {
-      readConsole("Packet non reçu");
+      writeConsole("Commande non reconnue");
     }
     scrollToBottom();
   }
 }
 
-function readConsole(message) {
+function writeConsole(message) {
   consoleContainer.innerHTML += `<li>${message}</li>`;
 }
 
 function sendPacket(packet) {
   packet = JSON.stringify(packet);
-  readConsole(`Envoi : ${packet}`);
+  writeConsole(`Envoi : ${packet}`);
   ws.send(packet);
 }
 

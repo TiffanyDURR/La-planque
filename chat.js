@@ -62,7 +62,10 @@ function onMessage(event) {
       chatBox.innerHTML += `
 <div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat">${packet.from}</span> : ${packet.message}</div>`;
     } else if (packet.command == "CONNECT") {
-      userList.innerHTML += `<li><span>${packet.users}</span></li>`;
+      let users = packet.users;
+      users.forEach((user) => {
+        userList.innerHTML += `<li><span>${user}</span></li>`;
+      });
     } else {
       readConsole("Packet non reçu");
     }

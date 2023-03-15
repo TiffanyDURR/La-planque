@@ -319,6 +319,32 @@ input#message {
   border-radius: 12px 0px 0px 12px;
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border: 1px solid rgb(28, 14, 91, 0.2);
+  background-color: rgb(28, 14, 91, 0.2);
+  border-radius: 8px;
+  margin-left: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  border: 1px solid rgb(28, 14, 91, 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
 .titre-pseudo {
   margin-bottom: 24px;
 }
@@ -350,6 +376,7 @@ input#message:focus {
   overflow: scroll;
   scroll-behavior: smooth;
   width: 100%;
+  padding-right: 14px;
 }
 
 .deconnex {

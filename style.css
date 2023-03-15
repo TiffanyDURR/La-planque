@@ -346,6 +346,15 @@ input#message:focus {
   scrollbar-width: thin;
   overflow: scroll;
   scroll-behavior: smooth;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+div.message-envoye {
+  width: 100%;
+  height: auto;
 }
 
 .error {
@@ -399,6 +408,50 @@ h1 {
   font-size: 13px;
   width: 60px;
   display: inline-block;
+}
+
+.chatcontainer {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+}
+
+.user-list {
+  margin-left: 28px;
+  background-color: rgb(28, 14, 91, 0.3);
+  padding: 20px;
+  border-radius: 16px;
+  height: 400px;
+  scrollbar-width: thin;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  width: 280px;
+}
+.user-list li {
+  display: block;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background-color: rgb(28, 14, 91, 0.3);
+  border-radius: 8px;
+  color: #f1ebeb;
+}
+
+.user-list li span {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 20px;
+}
+
+.user-list h2 {
+  color: #f1ebeb;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Tablette */

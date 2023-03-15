@@ -4,18 +4,22 @@ const envoyerBTN = document.getElementById("submit");
 const messageInput = document.getElementById("message");
 const pseudoInput = document.getElementById("pseudo");
 const chatBox = document.querySelector(".chatbox");
+const userList = document.querySelector(".users");
 
 let ws = null;
 
-function createPacket(command, from, content) {
-  let packet = new Object();
+connectToServer();
 
-  packet.command = command;
-  packet.from = from;
-  packet.content = content;
-
-  return JSON.stringify(packet);
+function login() {
+  let pseudo = pseudoInput.value;
+  let packet = connectPacket(pseudo);
+  sendPacket(packet);
 }
+
+seConnecterBTN.addEventListener("click", (e) => {
+  e.preventDefault();
+  login();
+});
 
 function scrollToBottom() {
   chatBox.scrollTop = chatBox.scrollHeight;
@@ -52,34 +56,33 @@ function onMessage(event) {
       let heure = now.getHours();
       let minute = now.getMinutes();
       let seconde = now.getSeconds();
+      if (seconde < 10 || heure < 10 || minute < 10) {
+        seconde = "0" + seconde;
+      }
       chatBox.innerHTML += `
-<div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat">${packet.from}</span> : ${packet.content}</div>`;
+<div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat">${packet.from}</span> : ${packet.message}</div>`;
+    } else if (packet.command == "CONNECT") {
+      userList.innerHTML += `<li><span>${packet.users}</span></li>`;
     } else {
       readConsole("Packet non reçu");
     }
+    scrollToBottom();
   }
 }
-
-seConnecterBTN.addEventListener("click", (e) => {
-  e.preventDefault();
-  connectToServer();
-});
 
 function readConsole(message) {
   consoleContainer.innerHTML += `<li>${message}</li>`;
 }
 
-function sendMessage(message) {
-  readConsole(`Envoi : ${message}`);
-  ws.send(message);
-  scrollToBottom();
+function sendPacket(packet) {
+  packet = JSON.stringify(packet);
+  readConsole(`Envoi : ${packet}`);
+  ws.send(packet);
 }
 
 envoyerBTN.addEventListener("click", (e) => {
   e.preventDefault();
-
-  let packet = createPacket("SEND_MESSAGE", pseudoInput.value, messageInput.value);
-
-  sendMessage(packet);
+  let packet = sendMessagePacket(message.value, "#000000");
+  sendPacket(packet);
   messageInput.value = "";
 });

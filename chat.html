@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/159d0e16c5.js" crossorigin="anonymous"></script>
     <title>La Planque</title>
     <script defer src="scripts/main.js"></script>
+    <script defer src="packets.js"></script>
     <script defer src="chat.js"></script>
   </head>
   <body>
@@ -44,8 +45,12 @@
             </div>
           </form>
 
-          <div class="chatbox" id="boitechat">
-            <span></span>
+          <div class="chatcontainer">
+            <div class="chatbox" id="boitechat"></div>
+            <div class="user-list">
+              <h2>En ligne</h2>
+              <div class="users"></div>
+            </div>
           </div>
 
           <form class="msg">

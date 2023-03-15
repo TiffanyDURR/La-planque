@@ -204,7 +204,8 @@ input#colorpicker {
   color: #f1ebeb;
 }
 
-.colorshow {
+.colorshow,
+.valider-color {
   border: none;
   outline: none;
   background-color: rgb(28, 14, 91, 0.5);
@@ -217,6 +218,10 @@ input#colorpicker {
   color: #f1ebeb;
   margin-left: 8px;
   width: 40px;
+  text-align: center;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
 }
 
 input#pseudo:focus {

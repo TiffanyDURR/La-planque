@@ -5,10 +5,25 @@ const messageInput = document.getElementById("message");
 const pseudoInput = document.getElementById("pseudo");
 const chatBox = document.querySelector(".chatbox");
 const userList = document.querySelector(".users");
+let checkColor = document.querySelector(".valider-color");
+let colorView = document.querySelector(".colorshow");
+
+function init() {
+  connectToServer();
+  let colorInput = document.getElementById("colorpicker");
+  let savedColor = localStorage.getItem("COLORTEXT");
+
+  if (savedColor == null) {
+    savedColor = "#f18d5c";
+  }
+
+  colorInput.value = savedColor;
+  colorView.style.background = savedColor;
+}
 
 let ws = null;
 
-connectToServer();
+init();
 
 function login() {
   let pseudo = pseudoInput.value;
@@ -78,11 +93,12 @@ function sendPacket(packet) {
 
 envoyerBTN.addEventListener("click", (e) => {
   e.preventDefault();
-  let colorInput = document.getElementById("colorpicker");
-  let colorValue = colorInput.value;
-  console.log(colorValue);
-
   let packet = sendMessagePacket(message.value, colorValue);
   sendPacket(packet);
   messageInput.value = "";
+});
+
+checkColor.addEventListener("click", () => {
+  localStorage.setItem("COLORTEXT", colorValue);
+  colorView.style.background = colorValue;
 });

@@ -187,6 +187,38 @@ input#pseudo {
   font-size: 17px;
 }
 
+.colorpicker {
+  display: flex;
+}
+
+input#colorpicker {
+  border: none;
+  outline: none;
+  background-color: rgb(28, 14, 91, 0.5);
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 1px solid rgb(28, 14, 91, 0.3);
+  border-radius: 12px;
+  font-size: 17px;
+  padding: 12px;
+  color: #f1ebeb;
+}
+
+.colorshow {
+  border: none;
+  outline: none;
+  background-color: rgb(28, 14, 91, 0.5);
+  -moz-outline-style: none;
+  box-shadow: none;
+  border: 1px solid rgb(28, 14, 91, 0.3);
+  border-radius: 12px;
+  font-size: 17px;
+  padding: 12px;
+  color: #f1ebeb;
+  margin-left: 8px;
+  width: 40px;
+}
+
 input#pseudo:focus {
   border-color: #f18d5c;
 }

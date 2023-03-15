@@ -91,6 +91,9 @@ function sendPacket(packet) {
   ws.send(packet);
 }
 
+let colorInput = document.getElementById("colorpicker");
+let colorValue = colorInput.value;
+
 envoyerBTN.addEventListener("click", (e) => {
   e.preventDefault();
   let packet = sendMessagePacket(message.value, colorValue);

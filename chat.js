@@ -78,7 +78,11 @@ function sendPacket(packet) {
 
 envoyerBTN.addEventListener("click", (e) => {
   e.preventDefault();
-  let packet = sendMessagePacket(message.value, "#000000");
+  let colorInput = document.getElementById("colorpicker");
+  let colorValue = colorInput.value;
+  console.log(colorValue);
+
+  let packet = sendMessagePacket(message.value, colorValue);
   sendPacket(packet);
   messageInput.value = "";
 });

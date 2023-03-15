@@ -6,7 +6,7 @@ function handleMessage(packet) {
   if (seconde < 10 || heure < 10 || minute < 10) {
     seconde = "0" + seconde;
   }
-  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat">${packet.from}</span> : ${packet.message}</div>`;
+  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${packet.message}</div>`;
 }
 
 function handleConnect(packet) {

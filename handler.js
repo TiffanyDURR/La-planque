@@ -3,8 +3,14 @@ function handleMessage(packet) {
   let heure = now.getHours();
   let minute = now.getMinutes();
   let seconde = now.getSeconds();
-  if (seconde < 10 || heure < 10 || minute < 10) {
+  if (seconde < 10) {
     seconde = "0" + seconde;
+  }
+  if (heure < 10) {
+    heure = "0" + heure;
+  }
+  if (minute < 10) {
+    minute = "0" + minute;
   }
   chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${packet.message}</div>`;
 }

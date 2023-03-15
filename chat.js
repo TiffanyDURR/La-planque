@@ -91,10 +91,10 @@ function sendPacket(packet) {
   ws.send(packet);
 }
 
-let colorInput = document.getElementById("colorpicker");
-let colorValue = colorInput.value;
-
 envoyerBTN.addEventListener("click", (e) => {
+  let colorInput = document.getElementById("colorpicker");
+  let colorValue = colorInput.value;
+
   e.preventDefault();
   let packet = sendMessagePacket(message.value, colorValue);
   sendPacket(packet);
@@ -102,6 +102,10 @@ envoyerBTN.addEventListener("click", (e) => {
 });
 
 checkColor.addEventListener("click", () => {
+  let colorInput = document.getElementById("colorpicker");
+  let colorValue = colorInput.value;
+
   localStorage.setItem("COLORTEXT", colorValue);
   colorView.style.background = colorValue;
+  console.log(colorView);
 });

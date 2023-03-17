@@ -1,5 +1,8 @@
 function handleMessage(packet) {
-  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${packet.message}</div>`;
+
+  var message = replaceURLs(packet.message);
+
+  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${message}</div>`;
 
   if (document.hidden) {
     missedMessages++;

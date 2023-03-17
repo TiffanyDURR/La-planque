@@ -337,6 +337,11 @@ input#valider {
   border: 2px solid #f18d5c;
 }
 
+.message-envoye a {
+  color: #f18d5c;
+  font-weight: 600;
+}
+
 .check2:focus,
 .check2:active {
   border: 2px solid #f18d5c;

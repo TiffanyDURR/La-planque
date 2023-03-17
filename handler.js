@@ -1,22 +1,9 @@
 function handleMessage(packet) {
-  let now = new Date();
-  let heure = now.getHours();
-  let minute = now.getMinutes();
-  let seconde = now.getSeconds();
-  if (seconde < 10) {
-    seconde = "0" + seconde;
-  }
-  if (heure < 10) {
-    heure = "0" + heure;
-  }
-  if (minute < 10) {
-    minute = "0" + minute;
-  }
-  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${heure}:${minute}:${seconde}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${packet.message}</div>`;
+  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${packet.message}</div>`;
 
   if (document.hidden) {
     missedMessages++;
-    document.title = `(${missedMessages}) Nouveaux message(s)`;
+    document.title = `(${missedMessages}) ${originalTitle}`;
   }
 }
 
@@ -29,9 +16,11 @@ function handleConnect(packet) {
 
 function handleUserLeft(packet) {
   let itemUser = document.getElementById(packet.username);
+  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span>${packet.username} s'est déconnecté.</div>`;
   itemUser.remove();
 }
 
 function handleUserConnected(packet) {
+  chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span>${packet.username} vient de se connecter.</div>`;
   userList.innerHTML += `<li id="${packet.username}"><span>${packet.username}</span></li>`;
 }

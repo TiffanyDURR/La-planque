@@ -7,6 +7,34 @@ const chatBox = document.querySelector(".chatbox");
 const userList = document.querySelector(".users");
 let checkColor = document.querySelector(".valider-color");
 let colorView = document.querySelector(".colorshow");
+let originalTitle = document.title;
+let missedMessages = 0;
+
+// Events / Listeners
+document.addEventListener("visibilitychange", visibilityChanged);
+seConnecterBTN.addEventListener("click", (e) => {
+  e.preventDefault();
+  login();
+});
+
+envoyerBTN.addEventListener("click", (e) => {
+  let colorInput = document.getElementById("colorpicker");
+  let colorValue = colorInput.value;
+
+  e.preventDefault();
+  let packet = sendMessagePacket(message.value, colorValue);
+  sendPacket(packet);
+  messageInput.value = "";
+});
+
+checkColor.addEventListener("click", () => {
+  let colorInput = document.getElementById("colorpicker");
+  let colorValue = colorInput.value;
+
+  localStorage.setItem("COLORTEXT", colorValue);
+  colorView.style.background = colorValue;
+  console.log(colorView);
+});
 
 function init() {
   connectToServer();
@@ -31,10 +59,12 @@ function login() {
   sendPacket(packet);
 }
 
-seConnecterBTN.addEventListener("click", (e) => {
-  e.preventDefault();
-  login();
-});
+function visibilityChanged() {
+  if (!document.hidden) {
+    document.title = originalTitle;
+    missedMessages = 0;
+  }
+}
 
 function scrollToBottom() {
   chatBox.scrollTop = chatBox.scrollHeight;
@@ -90,22 +120,3 @@ function sendPacket(packet) {
   writeConsole(`Envoi : ${packet}`);
   ws.send(packet);
 }
-
-envoyerBTN.addEventListener("click", (e) => {
-  let colorInput = document.getElementById("colorpicker");
-  let colorValue = colorInput.value;
-
-  e.preventDefault();
-  let packet = sendMessagePacket(message.value, colorValue);
-  sendPacket(packet);
-  messageInput.value = "";
-});
-
-checkColor.addEventListener("click", () => {
-  let colorInput = document.getElementById("colorpicker");
-  let colorValue = colorInput.value;
-
-  localStorage.setItem("COLORTEXT", colorValue);
-  colorView.style.background = colorValue;
-  console.log(colorView);
-});

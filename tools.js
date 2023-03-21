@@ -1,11 +1,11 @@
 let emojis = {
-  " :D": " 😀",
-  " =D": " 😀",
-  " :)": " 🙂",
-  " ;)": " 😉",
-  " :(": " 🙁",
-  " :'(": " 😢",
-  " <3": " ❤️",
+  ":D": "😀",
+  "=D": "😀",
+  ":)": "🙂",
+  ";)": "😉",
+  ":(": "🙁",
+  ":'(": "😢",
+  "<3": "❤️",
 };
 
 function buildTimeStamp() {
@@ -43,7 +43,16 @@ function replaceSmileys(message) {
   if (!message) return;
 
   for (const key of Object.keys(emojis)) {
-    message = message.replace(key, emojis[key]);
+    if (message == key) {
+      message = emojis[key];
+    } else if (message.includes(" " + key)) {
+      message = message.replace(" " + key, " " + emojis[key]);
+    }
+    else if (message.includes(key + " ")) {
+      message = message.replace(key + " ", emojis[key] + " ");
+    }
+
+    //message = message.replace(key, emojis[key]);
   }
 
   return message;

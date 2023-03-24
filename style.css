@@ -537,6 +537,35 @@ h1 {
   text-align: center;
 }
 
+.users li {
+  display: flex;
+  align-items: center;
+}
+
+.users li .fa-circle {
+  margin-right: 6px;
+  font-size: 12px;
+}
+
+.users li .fa-pen {
+  display: none;
+  margin-left: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+  animation: 0.5s linear 1s infinite alternate slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 6px;
+    margin-top: 0px;
+  }
+  to {
+    margin-left: 12px;
+    margin-top: 2px;
+  }
+}
+
 /* Tablette */
 /* ------------------------------------------------------------------------------------------------------- */
 

@@ -1,8 +1,5 @@
 function handleMessage(packet) {
-
-  var message = replaceURLs(packet.message);
-
-  message = replaceSmileys(message);
+  var message = buildMessage(packet.message);
 
   chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span><span class="pseudo-chat" style="color:${packet.color}">${packet.from}</span> : ${message}</div>`;
 

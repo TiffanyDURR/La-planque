@@ -8,7 +8,12 @@ const userList = document.querySelector(".users");
 let checkColor = document.querySelector(".valider-color");
 let colorView = document.querySelector(".colorshow");
 let originalTitle = document.title;
+const typingCooldown = 4000;
+const userTypingCooldown = 5000; // Toujours supérieur a typingCoolDown
+const afkTime = 1000 * 60 * 5;
 let missedMessages = 0;
+let isTyping = false;
+let currentStatus = 1;
 
 // Events / Listeners
 document.addEventListener("visibilitychange", visibilityChanged);
@@ -36,6 +41,9 @@ checkColor.addEventListener("click", () => {
   console.log(colorView);
 });
 
+window.addEventListener("mousemove", throttle(wakeUp, 1000));
+window.addEventListener("keydown", throttle(wakeUp, 1000));
+
 function init() {
   connectToServer();
   let colorInput = document.getElementById("colorpicker");
@@ -47,6 +55,8 @@ function init() {
 
   colorInput.value = savedColor;
   colorView.style.background = savedColor;
+
+  window.setInterval(afkLoop, afkTime);
 }
 
 let ws = null;
@@ -104,6 +114,10 @@ function onMessage(event) {
       handleUserLeft(packet);
     } else if (packet.command == "USER_CONNECTED") {
       handleUserConnected(packet);
+    } else if (packet.command == "IS_TYPING") {
+      handleIsTyping(packet);
+    } else if (packet.command == "STATUS_UPDATE") {
+      handleStatusUpdate(packet);
     } else {
       writeConsole("Commande non reconnue");
     }
@@ -119,4 +133,34 @@ function sendPacket(packet) {
   packet = JSON.stringify(packet);
   writeConsole(`Envoi : ${packet}`);
   ws.send(packet);
+}
+
+function onInput(e) {
+  if (!isTyping) {
+    isTyping = true;
+
+    sendPacket(isTypingPacket());
+
+    setTimeout("resetCooldown()", typingCooldown);
+  }
+}
+
+function resetCooldown() {
+  isTyping = false;
+}
+
+function wakeUp() {
+  if (currentStatus != 1) {
+    currentStatus = 1;
+
+    sendPacket(statusPacket(1));
+  }
+}
+
+function afkLoop() {
+  if (currentStatus != 2) {
+    currentStatus = 2;
+
+    sendPacket(statusPacket(2));
+  }
 }

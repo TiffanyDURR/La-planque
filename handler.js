@@ -26,3 +26,19 @@ function handleUserConnected(packet) {
   chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span>${packet.username} vient de se connecter.</div>`;
   userList.innerHTML += `<li id="${packet.username}"><span>${packet.username}</span></li>`;
 }
+
+function handleIsTyping(packet) {
+  let itemUser = document.getElementById(packet.username);
+
+  console.log(packet.username + " is typing ...");
+}
+
+function handleStatusUpdate(packet) {
+  let itemUser = document.getElementById(packet.username);
+
+  if (packet.status == 1) {
+    console.log(packet.username + " is online");
+  } else if (packet.status == 2) {
+    console.log(packet.username + " is away");
+  }
+}

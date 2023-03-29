@@ -24,7 +24,7 @@ function handleUserLeft(packet) {
 
 function handleUserConnected(packet) {
   chatBox.innerHTML += ` <div class="message-envoye"> <span class="timestamp">${buildTimeStamp()}</span>${packet.username} vient de se connecter.</div>`;
-  userList.innerHTML += `<li id="${packet.username}"><span>${packet.username}</span></li>`;
+  userList.innerHTML += `<li id="${packet.username}"><i class="fas fa-circle"></i><span>${packet.username}</span> <i class="fas fa-pen"></i></li>`;
 }
 
 function handleIsTyping(packet) {
@@ -33,9 +33,12 @@ function handleIsTyping(packet) {
 
   iconsTyping.forEach((iconsTyping) => {
     iconsTyping.style.display = "block";
-  });
 
-  console.log(packet.username + " is typing ...");
+    if (typingTimer != null) {
+      window.clearTimeout(typingTimer);
+    }
+    typingTimer = setTimeout(finishTyping, 6000, iconsTyping);
+  });
 }
 
 function handleStatusUpdate(packet) {
@@ -47,9 +50,7 @@ function handleStatusUpdate(packet) {
     iconsOnline.forEach((iconOnline) => {
       iconOnline.style.color = "green";
     });
-    console.log(packet.username + " is online");
   } else if (packet.status == 2) {
-    console.log(packet.username + " is away");
     iconsOnline.forEach((iconOnline) => {
       iconOnline.style.color = "red";
     });

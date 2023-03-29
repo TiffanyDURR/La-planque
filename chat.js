@@ -14,6 +14,7 @@ const afkTime = 1000 * 60 * 5;
 let missedMessages = 0;
 let isTyping = false;
 let currentStatus = 1;
+let typingTimer = null;
 
 // Events / Listeners
 document.addEventListener("visibilitychange", visibilityChanged);
@@ -163,4 +164,11 @@ function afkLoop() {
 
     sendPacket(statusPacket(2));
   }
+}
+
+function finishTyping(element)
+{
+  element.style.display = "none";
+
+  typingTimer = null;
 }

@@ -1,3 +1,12 @@
+const handlers = {
+"MESSAGE_RECEIVED" : handleMessage,
+"CONNECT" : handleConnect,
+"USER_LEFT" : handleUserLeft,
+"USER_CONNECTED" : handleUserConnected,
+"IS_TYPING" : handleIsTyping,
+"STATUS_UPDATE" : handleStatusUpdate
+}
+
 function handleMessage(packet) {
   var message = buildMessage(packet.message);
 

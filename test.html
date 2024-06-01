@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Dot Game</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
+      const dots = [];
+
+      function generateDots() {
+        for (let i = 0; i < 100; i++) {
+          const dot = {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: 5,
+            color: '#000000',
+            speedX: Math.random() - 0.5,
+            speedY: Math.random() - 0.5
+          };
+          dots.push(dot);
+        }
+      }
+
+      function drawDots() {
+        for (let i = 0; i < dots.length; i++) {
+          const dot = dots[i];
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, dot.radius, 0, 2 * Math.PI);
+          ctx.fillStyle = dot.color;
+          ctx.fill();
+        }
+      }
+      
+      function drawLines() {
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'orange');
+        gradient.addColorStop(0.5, 'purple');
+        gradient.addColorStop(1, 'blue');
+        ctx.strokeStyle = gradient;
+
+        for (let i = 0; i < dots.length; i++) {
+          const dot1 = dots[i];
+          for (let j = 0; j < dots.length; j++) {
+            if (i !== j) {
+              const dot2 = dots[j];
+              const distance = Math.sqrt((dot1.x - dot2.x) ** 2 + (dot1.y - dot2.y) ** 2);
+              if (distance < 100) {
+                const opacity = 1 - distance / 100;
+                ctx.beginPath();
+                ctx.moveTo(dot1.x, dot1.y);
+                ctx.lineTo(dot2.x, dot2.y);
+                ctx.lineWidth = distance / 25;
+                ctx.strokeStyle = `rgba(255, 0, 0, ${opacity})`;
+                ctx.stroke();
+              }
+            }
+          }
+        }
+      }
+
+      function updateDots() {
+        for (let i = 0; i < dots.length; i++) {
+          const dot = dots[i];
+          if (dot.x < 0 || dot.x > canvas.width) {
+            dot.speedX *= -1;
+          }
+          if (dot.y < 0 || dot.y > canvas.height) {
+            dot.speedY *= -1;
+          }
+          dot.x += dot.speedX;
+          dot.y += dot.speedY;
+        }
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawDots();
+        drawLines();
+        updateDots();
+        requestAnimationFrame(update);
+      }
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      generateDots();
+      update();
+    </script>
+  </body>
+</html>

@@ -82,7 +82,7 @@ function scrollToBottom() {
 }
 
 function connectToServer() {
-  ws = new WebSocket("ws://212.198.179.227:27350/", ["osef"]);
+  ws = new WebSocket("ws://82.64.152.244:27350/", ["osef"]);
 
   if ("WebSocket" in window) {
     ws.onopen = function () {
@@ -107,18 +107,8 @@ function onMessage(event) {
     writeConsole("Message reçu..." + event.data);
     let packet = JSON.parse(event.data);
 
-    if (packet.command == "MESSAGE_RECEIVED") {
-      handleMessage(packet);
-    } else if (packet.command == "CONNECT") {
-      handleConnect(packet);
-    } else if (packet.command == "USER_LEFT") {
-      handleUserLeft(packet);
-    } else if (packet.command == "USER_CONNECTED") {
-      handleUserConnected(packet);
-    } else if (packet.command == "IS_TYPING") {
-      handleIsTyping(packet);
-    } else if (packet.command == "STATUS_UPDATE") {
-      handleStatusUpdate(packet);
+    if (handlers[packet.command]) {
+      handlers[packet.command](packet);
     } else {
       writeConsole("Commande non reconnue");
     }
@@ -166,8 +156,7 @@ function afkLoop() {
   }
 }
 
-function finishTyping(element)
-{
+function finishTyping(element) {
   element.style.display = "none";
 
   typingTimer = null;
